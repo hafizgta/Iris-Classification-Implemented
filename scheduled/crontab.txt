@@ -1,0 +1,4 @@
+
+0 10 * * * python3 main.py 
+
+
