@@ -1,8 +1,12 @@
 
 import numpy as np
 import tensorflow as tf
+import os
 
-model = tf.keras.models.load_model("./models/model.h5")
+path="./models/model.h5"
+if not os.path.isfile(path):
+    path="./inferencing/models/model.h5"
+model = tf.keras.models.load_model(path)
 
 # [0.07471338 0.07941484 0.0885422  0.08627246]
 def predict_iris(raw_input):

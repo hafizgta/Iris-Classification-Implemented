@@ -95,13 +95,19 @@ def main():
     )
 
     parser.add_argument(
-        "--hotswap",
-        type=bool,
+        "--output",
+        type=str,
         nargs="?",
-        default=True,
-        help="hotswap production model from this training"
+        default="./inferencing/models/",
+        help="location of where to save model"
     )
-
+    parser.add_argument(
+        "--modelname",
+        type=str,
+        nargs="?",
+        default="model",
+        help="define model name"
+    )
 
 
     opt = parser.parse_args()
@@ -137,6 +143,6 @@ def main():
     #how times it matched/ how many test cases
     accuracy=np.sum(y_label==predict_label)/length * 100 
     print("Accuracy of the dataset",accuracy )
-    model.save('model.h5')
+    model.save(f'{opt.output}/{opt.modelname}.h5')
 if __name__=="__main__":
     main()
